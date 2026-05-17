@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Agenti Alert</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-item active" id="nav-home" data-section="home" title="Home">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
+      </div>
+      <div class="sidebar-item" id="nav-explore" data-section="explore" title="Explore">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      </div>
+      <div class="sidebar-item" id="nav-saved" data-section="saved" title="Saved">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="sidebar-item" id="nav-community" data-section="community" title="Community">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <div class="sidebar-item" id="nav-bookmarks" data-section="bookmarks" title="Bookmarks">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+      </div>
+      <div class="sidebar-item" id="nav-settings" data-section="settings" title="Settings" style="margin-top: auto; margin-bottom: 20px;">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.6.86 1 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      </div>
+    </aside>
+
+    <!-- Main Content App -->
+    <main class="app-main">
+      
+      <!-- Top Navbar -->
+      <nav class="top-nav">
+        <div class="brand">
+          <div class="logo-a">A+</div>
+          <div class="brand-text">AGENTI ALERT</div>
+        </div>
+        
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="search-input" placeholder="Search opportunities..." />
+        </div>
+        
+        <div class="user-controls">
+          <span class="greeting">Namaste, User! 👋</span>
+          <div class="avatar" id="avatar-btn" title="Profile"></div>
+          <div class="top-icon" id="bell-btn" title="Notifications">
+            <span class="notif-badge">3</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          </div>
+          <div class="top-icon" id="topnav-settings-btn" title="Settings">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.6.86 1 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Dashboard Viewport -->
+      <div class="dashboard-content">
+        
+        <!-- Status Cards Row -->
+        <div class="stats-row">
+          <div class="stat-card orange-glow">
+            <div class="card-head">
+              <span>Total Openings:</span>
+              <div class="icon-circle orange"><svg viewBox="0 0 24 24" width="14" stroke="currentColor" fill="none" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div>
+            </div>
+            <div class="stat-value">12</div>
+          </div>
+          
+          <div class="stat-card green-glow">
+            <div class="card-head">
+              <span>Internships:</span>
+              <div class="icon-circle green"><svg viewBox="0 0 24 24" width="14" stroke="currentColor" fill="none" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg></div>
+            </div>
+            <div class="stat-value">8</div>
+          </div>
+          
+          <div class="stat-card red-glow">
+            <div class="card-head">
+              <span class="has-dot"><span class="dot red"></span>Hackathons:</span>
+              <div class="icon-circle red"><svg viewBox="0 0 24 24" width="14" stroke="currentColor" fill="none" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10c1.7 0 3 1.3 3 3v2c0 2.2-1.8 4-4 4h-8c-2.2 0-4-1.8-4-4V7c0-1.7 1.3-3 3-3z"></path></svg></div>
+            </div>
+            <div class="stat-value">Live Now</div>
+          </div>
+          
+          <div class="stat-card blue-glow">
+            <div class="card-head">
+              <span>Job Roles:</span>
+              <div class="icon-circle blue"><svg viewBox="0 0 24 24" width="14" stroke="currentColor" fill="none" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+            </div>
+            <div class="stat-value">8-25 LPA</div>
+          </div>
+        </div>
+
+        <!-- Main Layout (Opportunities + Right Sidebar) -->
+        <div class="content-grid">
+          
+          <!-- Opportunities Section -->
+          <div class="opportunities">
+            <h2>Recently Added</h2>
+            
+            <div class="opp-cards-grid" id="opp-cards-grid">
+              
+              <!-- Card 1 -->
+              <div class="opp-card blue-tint" data-company="Google" data-role="Software Engineer" data-location="Mountain View, CA" data-salary="14-18 LPA" data-type="Full-time" data-posted="1 day ago" data-desc="Join Google's world-class engineering team to build products used by billions. You'll work on cutting-edge infrastructure, scalable systems, and innovative user experiences.">
+                <div class="opp-top">
+                  <div class="company-brand">
+                    <div class="comp-logo c-google">G</div>
+                    <span>Google</span>
+                  </div>
+                  <div class="tag blue"><svg viewBox="0 0 24 24" width="10" stroke="currentColor" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Applied</div>
+                </div>
+                <h3>Software Engineer</h3>
+                <div class="opp-info">
+                  <p><svg viewBox="0 0 24 24" width="12" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Mountain View, CA</p>
+                  <p><svg viewBox="0 0 24 24" width="12" stroke="currentColor" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> 14-18 LPA</p>
+                </div>
+                <div class="opp-bottom">
+                  <span class="posted">Posted 1d ago</span>
+                  <button class="btn-action view-details-btn">View Details</button>
+                </div>
+              </div>
+              
+              <!-- Card 2 -->
+              <div class="opp-card yellow-tint" data-company="Microsoft" data-role="SDE-II" data-location="Redmond, WA" data-salary="20-24 LPA" data-type="Full-time" data-posted="1 day ago" data-desc="Microsoft is looking for a skilled SDE-II to work on Azure cloud services. Collaborate with top engineers to build enterprise-grade software solutions.">
+                <div class="opp-top">
+                  <div class="company-brand">
+                    <div class="comp-logo c-microsoft"><div style="background:#f25022;width:8px;height:8px;"></div><div style="background:#7fba00;width:8px;height:8px;"></div><div style="background:#00a4ef;width:8px;height:8px;"></div><div style="background:#ffb900;width:8px;height:8px;"></div></div>
+                    <span>Microsoft</span>
+                  </div>
+                  <div class="tag yellow">New</div>
+                </div>
+                <h3>SDE-II</h3>
+                <div class="opp-info">
+                  <p><svg viewBox="0 0 24 24" width="12" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Redmond, WA</p>
+                  <p><svg viewBox="0 0 24 24" width="12" stroke="currentColor" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> 20-24 LPA</p>
+                </div>
+                <div class="opp-bottom">
+                  <span class="posted">Posted 1d ago</span>
+                  <button class="btn-action view-details-btn">View Details</button>
+                </div>
+              </div>
+              
+              <!-- Card 3 -->
+              <div class="opp-card red-tint" data-company="Atlassian" data-role="UX Designer" data-location="Remote" data-salary="15-19 LPA" data-type="Remote / Full-time" data-posted="1 day ago" data-desc="Atlassian is seeking a creative UX Designer to shape the future of team collaboration tools. Work remotely with a globally distributed design team.">
+                <div class="opp-top">
+                  <div class="company-brand">
+                    <div class="comp-logo c-atlassian">A</div>
+                    <span>Atlassian</span>
+                  </div>
+                  <div class="tag red">Trending</div>
+                </div>
+                <h3>UX Designer</h3>
+                <div class="opp-info">
+                  <p><svg viewBox="0 0 24 24" width="12" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Remote</p>
+                  <p><svg viewBox="0 0 24 24" width="12" stroke="currentColor" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> 15-19 LPA</p>
+                </div>
+                <div class="opp-bottom">
+                  <span class="posted">Posted 1d ago</span>
+                  <button class="btn-action view-details-btn">View Details</button>
+                </div>
+              </div>
+
+              <!-- Card 4 (bonus) -->
+              <div class="opp-card" data-company="Amazon" data-role="ML Engineer" data-location="Seattle, WA" data-salary="22-30 LPA" data-type="Full-time" data-posted="2 days ago" data-desc="Amazon's AI/ML team is hiring engineers to build large-scale machine learning systems powering recommendations, Alexa, and AWS services.">
+                <div class="opp-top">
+                  <div class="company-brand">
+                    <div class="comp-logo c-amazon">A</div>
+                    <span>Amazon</span>
+                  </div>
+                  <div class="tag yellow">Hot</div>
+                </div>
+                <h3>ML Engineer</h3>
+                <div class="opp-info">
+                  <p><svg viewBox="0 0 24 24" width="12" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Seattle, WA</p>
+                  <p><svg viewBox="0 0 24 24" width="12" stroke="currentColor" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> 22-30 LPA</p>
+                </div>
+                <div class="opp-bottom">
+                  <span class="posted">Posted 2d ago</span>
+                  <button class="btn-action view-details-btn">View Details</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- No results message -->
+            <div id="no-results" class="no-results" style="display:none;">
+              <svg viewBox="0 0 24 24" width="40" stroke="currentColor" fill="none" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <p>No opportunities match your search.</p>
+            </div>
+          </div>
+          
+          <!-- Right Sidebar -->
+          <div class="right-panel">
+            
+            <div class="trending-list border-box">
+              <div class="box-head">
+                <h3>Trending</h3>
+                <svg viewBox="0 0 24 24" width="16" stroke="currentColor" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+              
+              <div class="trend-item" id="trend-1" data-company="Goldman Sachs" data-role="Quant Analyst" data-time="2 days ago">
+                <span class="rank">1</span>
+                <div class="trend-brand bg-blue">GS</div>
+                <div class="trend-info">
+                  <h4>Goldman Sachs</h4>
+                  <p>Quant</p>
+                </div>
+                <span class="trend-time">2d ago</span>
+              </div>
+              
+              <div class="trend-item" id="trend-2" data-company="Adobe" data-role="Product Manager" data-time="3 days ago">
+                <span class="rank">2</span>
+                <div class="trend-brand bg-red">A</div>
+                <div class="trend-info">
+                  <h4>Adobe</h4>
+                  <p>Product Mgr</p>
+                </div>
+                <span class="trend-time">3d ago</span>
+              </div>
+              
+              <div class="trend-item" id="trend-3" data-company="Meta" data-role="SDE-I" data-time="1 day ago">
+                <span class="rank">3</span>
+                <div class="trend-brand bg-white">M</div>
+                <div class="trend-info">
+                  <h4>Meta</h4>
+                  <p>SDE-I</p>
+                </div>
+                <span class="trend-time">1d ago</span>
+              </div>
+            </div>
+            
+            <div class="resume-cta">
+              <div class="resume-content">
+                <h2>GET YOUR<br>RESUME<br>REVIEWED</h2>
+                <p>Improve your chances!</p>
+                <button class="btn-white" id="resume-review-btn">Request Review</button>
+              </div>
+              <div class="resume-icon">
+                <svg viewBox="0 0 24 24" width="40" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ==================== OVERLAYS ==================== -->
+
+    <!-- Generic Backdrop -->
+    <div id="backdrop" class="backdrop"></div>
+
+    <!-- Job Details Modal -->
+    <div id="job-modal" class="modal" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <button class="modal-close" id="job-modal-close" aria-label="Close">&times;</button>
+        <div class="modal-company-row">
+          <div class="modal-logo" id="modal-logo"></div>
+          <div>
+            <h2 id="modal-role"></h2>
+            <p id="modal-company" class="modal-company-name"></p>
+          </div>
+          <div class="modal-tag-wrap" id="modal-tag"></div>
+        </div>
+        <div class="modal-meta">
+          <div class="modal-meta-item">
+            <svg viewBox="0 0 24 24" width="14" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span id="modal-location"></span>
+          </div>
+          <div class="modal-meta-item">
+            <svg viewBox="0 0 24 24" width="14" stroke="currentColor" fill="none" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <span id="modal-salary"></span>
+          </div>
+          <div class="modal-meta-item">
+            <svg viewBox="0 0 24 24" width="14" stroke="currentColor" fill="none" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <span id="modal-type"></span>
+          </div>
+          <div class="modal-meta-item">
+            <svg viewBox="0 0 24 24" width="14" stroke="currentColor" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span id="modal-posted"></span>
+          </div>
+        </div>
+        <p id="modal-desc" class="modal-desc"></p>
+        <div class="modal-actions">
+          <button class="btn-apply" id="modal-apply-btn">Apply Now</button>
+          <button class="btn-save" id="modal-save-btn">
+            <svg viewBox="0 0 24 24" width="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resume Review Modal -->
+    <div id="resume-modal" class="modal" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <button class="modal-close" id="resume-modal-close">&times;</button>
+        <h2 style="margin-bottom:8px;">Resume Review Request</h2>
+        <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:24px;">Our AI + expert reviewers will provide personalised feedback within 24 hours.</p>
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" id="review-name" placeholder="John Doe" />
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" id="review-email" placeholder="john@example.com" />
+        <label class="form-label">Paste Resume Text (or describe your experience)</label>
+        <textarea class="form-input" id="review-text" rows="5" placeholder="Paste your resume or a brief summary..."></textarea>
+        <div class="modal-actions" style="margin-top:20px;">
+          <button class="btn-apply" id="submit-review-btn">Submit Request</button>
+          <button class="btn-save" id="resume-modal-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Panel -->
+    <div id="notif-panel" class="side-panel" role="dialog">
+      <div class="panel-head">
+        <h3>Notifications</h3>
+        <button class="panel-close" id="notif-close">&times;</button>
+      </div>
+      <div class="notif-list">
+        <div class="notif-item unread">
+          <div class="notif-dot"></div>
+          <div>
+            <p class="notif-title">New hackathon alert!</p>
+            <p class="notif-sub">Smart India Hackathon 2025 is live. Deadline: May 30.</p>
+            <span class="notif-time">5 min ago</span>
+          </div>
+        </div>
+        <div class="notif-item unread">
+          <div class="notif-dot"></div>
+          <div>
+            <p class="notif-title">Google application viewed</p>
+            <p class="notif-sub">Your Software Engineer application was viewed by a recruiter.</p>
+            <span class="notif-time">2 hrs ago</span>
+          </div>
+        </div>
+        <div class="notif-item unread">
+          <div class="notif-dot"></div>
+          <div>
+            <p class="notif-title">3 new internships added</p>
+            <p class="notif-sub">Matching your profile in Bangalore & Remote.</p>
+            <span class="notif-time">Yesterday</span>
+          </div>
+        </div>
+        <div class="notif-item">
+          <div class="notif-dot" style="opacity:0;"></div>
+          <div>
+            <p class="notif-title">Resume review complete</p>
+            <p class="notif-sub">Check your inbox for detailed feedback.</p>
+            <span class="notif-time">2 days ago</span>
+          </div>
+        </div>
+      </div>
+      <button class="mark-read-btn" id="mark-all-read">Mark all as read</button>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="side-panel" role="dialog">
+      <div class="panel-head">
+        <h3>Settings</h3>
+        <button class="panel-close" id="settings-close">&times;</button>
+      </div>
+      <div class="settings-list">
+        <div class="setting-row">
+          <div>
+            <p class="setting-title">Email Alerts</p>
+            <p class="setting-sub">Get daily opportunity digests</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-email" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-row">
+          <div>
+            <p class="setting-title">Push Notifications</p>
+            <p class="setting-sub">Instant alerts for hot roles</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-push" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-row">
+          <div>
+            <p class="setting-title">Dark Mode</p>
+            <p class="setting-sub">Currently active</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-dark" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-row">
+          <div>
+            <p class="setting-title">Profile Visibility</p>
+            <p class="setting-sub">Let recruiters find you</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle-profile" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar Dropdown -->
+    <div id="avatar-dropdown" class="avatar-dropdown">
+      <div class="avatar-header">
+        <div class="avatar-big"></div>
+        <div>
+          <p class="avatar-name">User</p>
+          <p class="avatar-email">user@agentiai.com</p>
+        </div>
+      </div>
+      <hr class="dropdown-divider" />
+      <button class="dropdown-item" id="profile-btn">
+        <svg viewBox="0 0 24 24" width="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        View Profile
+      </button>
+      <button class="dropdown-item" id="logout-btn">
+        <svg viewBox="0 0 24 24" width="16" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        Log Out
+      </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
