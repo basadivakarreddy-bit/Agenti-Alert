@@ -1,4 +1,4 @@
-# 🚀 Agenti Alert
+# 🚀 Agenti Alerts
 
 > **Empowering proactive professionals with critical opportunities and real-time updates.**
 
